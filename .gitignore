@@ -1,7 +1,8 @@
 
-# Node
+# Node / Frontend
 /frontend/node_modules/
 /frontend/dist/
+/frontend/.vscode/
 
 # Java
 /backend/target/
