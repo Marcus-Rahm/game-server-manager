@@ -1,0 +1,14 @@
+
+# Node
+/frontend/node_modules/
+/frontend/dist/
+
+# Java
+/backend/target/
+/backend/.idea/ # For IntelliJ
+*.iml
+
+# Docker
+*.log
+.DS_Store
+
