@@ -1,0 +1,22 @@
+version: '3.8' # Use a recent Docker Compose file format version
+
+services:
+  db: # This is the service name that your backend will connect to
+    image: postgres:16 # Use a specific, recent PostgreSQL version
+    container_name: rabbithole-db # A friendly name for the container
+    environment:
+      POSTGRES_DB: rabbithole_db # The name of your database
+      POSTGRES_USER: rabbithole_user # Database user
+      POSTGRES_PASSWORD: mysecretpassword # Strong password in production!
+    ports:
+      - "5433:5432" # Map host port 5432 to container port 5432
+    volumes:
+      - db_data:/var/lib/postgresql/data # Persist data to a named volume
+    healthcheck: # Important for Compose Dev Services to know when DB is ready
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db_data: # Define the named volume
